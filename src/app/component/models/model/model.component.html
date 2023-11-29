@@ -1,0 +1,54 @@
+
+<div mat-dialog-title>
+  <h1>Employee Form</h1>
+</div>
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+
+    <!-- Reusable generic input component for First Name -->
+    <Generic-Input formControlName="firstName" label="First Name" placeholder="Ex. Technical"></Generic-Input>
+
+    <!-- Reusable generic input component for Last Name -->
+    <Generic-Input formControlName="lastName" label="Last Name" placeholder="Ex. Babaji"></Generic-Input>
+</div>
+<div class="row">
+  <Generic-Input formControlName="email" inputType="email" label="Email" placeholder="Ex. test@gmail.com"></Generic-Input>
+
+  <mat-form-field appearance="outline">
+      <mat-label>Date of birth</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dob">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<div class="row">
+  <mat-radio-group aria-label="Select an option" formControlName="gender">
+      <mat-label><b>Gender</b></mat-label>
+      <mat-radio-button value="male">Male</mat-radio-button>
+      <mat-radio-button value="female">Female</mat-radio-button>
+      <mat-radio-button value="others">Others</mat-radio-button>
+  </mat-radio-group>
+</div>
+<div class="row">
+  <mat-form-field appearance="outline">
+      <mat-label>Education</mat-label>
+      <mat-select formControlName="education">
+          <mat-option *ngFor="let val of education" [value]="val">{{val}}
+          </mat-option>
+      </mat-select>
+  </mat-form-field>
+  <Generic-Input placeholder="Ex. Google" formControlName="company" label="Company"></Generic-Input>
+
+</div>
+<div class="row">
+
+
+</div>
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+  </div>
+</form>

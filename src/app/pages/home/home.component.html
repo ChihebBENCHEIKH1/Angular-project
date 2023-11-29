@@ -1,0 +1,10 @@
+<Filter (filterChanged)="onFilterChanged($event)"></Filter>
+<Table
+  [dataSource]="dataSource"
+  [displayedColumns]="displayedColumns"
+  [filterValue]="filterValue"
+  (editEmployee)="openEditForm($event)"
+  (deleteEmployee)="deleteEmployee($event)"
+>
+</Table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"  aria-label="Select page of users"></mat-paginator>
